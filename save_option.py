@@ -46,10 +46,9 @@ def load_symbols(filename):
 
     return symbols
 
-
-prefix = sys.argv[0]
+prefix = sys.argv[2]
 symbol_list_file = sys.argv[1]
 
-symbol_csv_file = prefix + time.strftime("%Y-%m-%d") + ".csv"
+symbol_csv_file = prefix + time.strftime("%Y%m%d") + ".csv"
 symbol_arr = load_symbols(symbol_list_file)
 save_option(symbol_arr, symbol_csv_file)
