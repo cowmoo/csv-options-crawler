@@ -1,5 +1,7 @@
 __author__ = 'paulcao'
 
+from PandasBar import PandasBar
+
 class PandasBars(object):
 
     """A group of :class:`Bar` objects.

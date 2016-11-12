@@ -59,3 +59,14 @@ class PandasBar(Bar):
 
     def getUseAdjValue(self):
         return False
+
+    def getUnderlyingPrice(self):
+        """Returns the UnderlyingPrice."""
+        return float(self.getRow()["UnderlyingPrice"])
+
+    def getOpenInterest(self):
+        """Returns the open interest."""
+        if "OpenInterest" in self.getRow():
+            return float(self.getRow()["OpenInterest"])
+        else:
+            return float(0)

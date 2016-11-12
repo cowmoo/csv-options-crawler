@@ -3,6 +3,8 @@ __author__ = 'paulcao'
 from more_itertools import peekable
 from pyalgotrade.bar import Bar
 from pyalgotrade import barfeed
+from PandasBars import PandasBars
+from PandasBar import PandasBar
 
 class PandasBarFeed(barfeed.BaseBarFeed):
     def __init__(self, dataframe, instrument, frequency):
@@ -13,7 +15,7 @@ class PandasBarFeed(barfeed.BaseBarFeed):
         self.__next = 0
         self.started = False
 
-        groups = self.__df.groupby(["DateType","Symbol"]).groups
+        groups = self.__df.groupby(["DataDate","OptionRoot"]).groups
         timestamp_dict = {}
         bars_dict = {}
 
