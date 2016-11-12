@@ -12,8 +12,11 @@ def save_option(symbols, filename):
     for symbol in symbols:
         print "Crawling " + symbol + "..."
         option = Options(symbol, 'yahoo')
-        df = option.get_all_data()
-        append_to_csv(df, filename)
+        try:
+            df = option.get_all_data()
+            append_to_csv(df, filename)
+        except Exception as e:
+            print e
 
 def append_to_csv(df, filename):
     f = open(filename,'a')
@@ -46,10 +49,9 @@ def load_symbols(filename):
 
     return symbols
 
-
-prefix = sys.argv[0]
+prefix = sys.argv[2]
 symbol_list_file = sys.argv[1]
 
-symbol_csv_file = prefix + time.strftime("%Y-%m-%d") + ".csv"
+symbol_csv_file = prefix + time.strftime("%Y%m%d") + ".csv"
 symbol_arr = load_symbols(symbol_list_file)
 save_option(symbol_arr, symbol_csv_file)
